@@ -1,7 +1,7 @@
 #include <stdio.h>
-void to_binary(int input);
 void main()
 {
+	int i;
 	int input;
 	
 	while(1) {
@@ -10,18 +10,9 @@ void main()
 		if(input == 0)
 			break;
 		printf("2Áø¼ö : ");
-			to_binary(input);
+		for(i = 0; i < 16; i++)
+			printf("%d", (input >> 15 - i) & 0x1);
 		printf("\n"); 
 	}
 }
-void to_binary(int input)
-{
-	if(input < 0)
-		return;
-	if(input >= 2) {
-		to_binary(input / 2);
-		printf("%d", input % 2);
-	}
-	else
-		printf("%d", input);
-}
+

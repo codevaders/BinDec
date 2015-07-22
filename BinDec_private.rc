@@ -10,8 +10,8 @@ A ICON "BinDec.ico"
 // TO CHANGE VERSION INFORMATION, EDIT PROJECT OPTIONS...
 //
 1 VERSIONINFO
-FILEVERSION 1,0,1,1
-PRODUCTVERSION 1,0,1,1
+FILEVERSION 1,0,1,11
+PRODUCTVERSION 1,0,1,11
 FILETYPE VFT_APP
 {
   BLOCK "StringFileInfo"
@@ -19,14 +19,14 @@ FILETYPE VFT_APP
     BLOCK "041204E4"
     {
       VALUE "CompanyName", "rsqn"
-      VALUE "FileVersion", "1.0.1.1"
-      VALUE "FileDescription", " (demical number to) binary number converter For Windows operating system"
+      VALUE "FileVersion", "1.0.1.11"
+      VALUE "FileDescription", "(demical number to) binary number converter For Windows operating system"
       VALUE "InternalName", "BinDec"
       VALUE "LegalCopyright", "rsqn127"
       VALUE "LegalTrademarks", ""
       VALUE "OriginalFilename", "BinDec"
       VALUE "ProductName", "BinDec"
-      VALUE "ProductVersion", "1.0.1.1"
+      VALUE "ProductVersion", "1.0.1.11"
     }
   }
   BLOCK "VarFileInfo"

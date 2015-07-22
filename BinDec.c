@@ -20,7 +20,8 @@ int main(void) // void main()
 		printf("2진수 : ");
 		for(i = 0; i < 16; i++)
 			printf("%d", (input >> 15 - i) & 0x1);
-		printf("\n"); 
+		printf("\n");
+		printf("\n");
 	}
 	
 	// 프로그램이 정상적으로 종료되었다는 의미로 0을 반환합니다. 

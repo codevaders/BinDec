@@ -11,30 +11,6 @@ long read_int32();
 // 이전 버전에서 int main이 금지되어있다고 작성했는데, 오류입니다. 
 int main(void) // void main()
 {
-<<<<<<< HEAD
-	int i;
-	short input;
-	
-	printf("10진수 -> 2진수 변환기\n");
-	printf("0을 입력시 프로그램이 종료됩니다.\n");
-	printf("\n");
-	
-	while(1) {
-		printf("정수를 입력하세요 : ");
-		scanf("%d", &input);
-		
-		if(input == 0)
-			break;
-		printf("2진수 : ");
-		for(i = 0; i < 16; i++)
-			printf("%d", (input >> 15 - i) & 0x1);
-		printf("\n");
-		printf("\n");
-	}
-	
-	// 프로그램이 정상적으로 종료되었다는 의미로 0을 반환합니다. 
-	return 0;
-=======
     int i;
     long input;
 
@@ -80,5 +56,4 @@ long read_int32() {
 
     // 변환한 정수를 반환합니다.
     return result;
->>>>>>> 2f2d53f5917bc1f2b132f215d8d0d69dfd32e4c8
 }

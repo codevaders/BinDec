@@ -5,6 +5,9 @@
 
 #define MAX_INPUT_LEN	256
 
+#define MIN_INPUT_VAL	-32768
+#define MAX_INPUT_VAL	32767
+
 long read_int32(void)
 {
 	static char input[MAX_INPUT_LEN];
@@ -60,6 +63,8 @@ int main(int argc, char *argv[])
                                         printf("Error: Not a number\n");
                                         break;
                                 default:
+					if(input < MIN_INPUT_VAL) printf("Warn: Input is too small\n");
+					if(input > MAX_INPUT_VAL) printf("Warn: Input is too big\n");
 					printf("Out: ");
                                         calc(input);
                                         break;

@@ -1,59 +1,96 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <stdlib.h>	/* strtol()  */
+#include <ctype.h>      /* isdigit() */
+#include <string.h>     /* strcpy()  */
+
 #define MAX_INPUT_LEN	256
 
-// 32ºñÆ® Á¤¼ö¸¦ È¹µæÇÕ´Ï´Ù. ½ÇÆÐ½Ã 0À» ¹ÝÈ¯ÇÕ´Ï´Ù.
-long read_int32();
+#define MIN_INPUT_VAL	-32768
+#define MAX_INPUT_VAL	32767
 
-// C¸¦ »ç¿ëÇÒ ¶§´Â main ÇÔ¼öÀÇ ¹ÝÈ¯ÇüÀ» int·Î ÇÏ´Â °ÍÀÌ Ç¥ÁØÀÔ´Ï´Ù.
-// C++¿¡¼­´Â void mainÀÌ¶ó´Â Ç¥ÇöÀº ±âº»ÀûÀ¸·Î ±ÝÁöµÇ¾îÀÖ½À´Ï´Ù.
-// ÀÌÀü ¹öÀü¿¡¼­ int mainÀÌ ±ÝÁöµÇ¾îÀÖ´Ù°í ÀÛ¼ºÇß´Âµ¥, ¿À·ùÀÔ´Ï´Ù. 
-int main(void) // void main()
+long read_int32(void)
 {
-    int i;
-    long input;
+	static char input[MAX_INPUT_LEN];
+	long result = 0;
 
-    printf("10Áø¼ö -> 2Áø¼ö º¯È¯±â\n");
-    printf("0À» ÀÔ·Â½Ã ÇÁ·Î±×·¥ÀÌ Á¾·áµË´Ï´Ù.\n");
-    printf("\n");
+	scanf("%s", &input);
+        if(strcmp(input, "Quit") == 0) return -2147483648;
 
-    while (1) {
-        printf("Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
-        input = read_int32(); // scanf("%d", &input);
+	result = strtol(input, NULL, 10);
+	/* strtol: http://man7.org/linux/man-pages/man3/strtol.3.html */
 
-        // ÀÔ·ÂµÈ Á¤¼ö°¡ 0ÀÌ¶ó¸é ¹Ýº¹¹®À» Á¾·áÇÕ´Ï´Ù.
-        if (input == 0)
-            break;
-
-        // 2Áø¼ö¸¦ Ãâ·ÂÇÕ´Ï´Ù.
-        printf("2Áø¼ö : ");
-        for (i = 0; i < 16; i++) {
-            // (15 - i)¸¸Å­ inputÀ» ½¬ÇÁÆ® ÇÏ¿©
-            // ¿ÞÂÊ¿¡¼­ (i + 1)¹øÂ° ÀÚ¸®ÀÇ ºñÆ®¸¦ 1ÀÇ ÀÚ¸®·Î ¸ÂÃá ÈÄ,
-            // ÀÌ°ÍÀÌ 1ÀÎÁö È®ÀÎÇÏ¿© Ãâ·ÂÇÕ´Ï´Ù.
-            printf("%d", (input >> (15 - i)) & 0x1);
-        }
-
-        printf("\n");
-        printf("\n");
-    }
-
-    // ÇÁ·Î±×·¥ÀÌ Á¤»óÀûÀ¸·Î Á¾·áµÇ¾ú´Ù´Â ÀÇ¹Ì·Î 0À» ¹ÝÈ¯ÇÕ´Ï´Ù. 
-    return 0;
+	return result;
 }
 
-// 32ºñÆ® Á¤¼ö¸¦ È¹µæÇÕ´Ï´Ù. ½ÇÆÐ½Ã 0À» ¹ÝÈ¯ÇÕ´Ï´Ù.
-long read_int32() {
-    static char input[MAX_INPUT_LEN];
-    long result = 0;
+void calc(long decimal_number)
+{
+        int i;
 
-    // »ç¿ëÀÚ·ÎºÎÅÍ ¹®ÀÚ¿­À» È¹µæÇÕ´Ï´Ù. 
-    scanf("%s", input);
+        for(i = 0; i < 16; i++)
+	{
+                /*
+                (15 - i)ë§Œí¼ inputì„ ì‰¬í”„íŠ¸ í•˜ì—¬
+                ì™¼ìª½ì—ì„œ (i + 1)ë²ˆì§¸ ìžë¦¬ì˜ ë¹„íŠ¸ë¥¼ 1ì˜ ìžë¦¬ë¡œ ë§žì¶˜ í›„,
+                ì´ê²ƒì´ 1ì¸ì§€ í™•ì¸í•˜ì—¬ ì¶œë ¥í•©ë‹ˆë‹¤.
+                */
+                printf("%d", (decimal_number >> (15 - i)) & 0x1);
+        }
+        printf("\n");
+}
 
-    // ¹®ÀÚ¿­-Á¤¼ö·Î º¯È¯À» ½ÃµµÇÕ´Ï´Ù.
-    result = strtol(input, NULL, 10);
+int main(int argc, char *argv[])
+{
+        int x = EXIT_FAILURE;
+        long input;
 
-    // º¯È¯ÇÑ Á¤¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
-    return result;
+        if(argc == 1)
+        {
+                /* method 1: prompt */
+
+                printf("Demical to Binary Converter\n");
+                printf("Escape command is \"Quit\".\n");
+                while(x == EXIT_FAILURE)
+                {
+                        printf("\nIn: ");
+			input = read_int32();
+
+                        switch(input)
+                        {
+                                case -2147483648:
+                                        x = EXIT_SUCCESS;
+                                        break;
+                                case 0:
+                                        printf("Error: Not a number\n");
+                                        break;
+                                default:
+					if(input < MIN_INPUT_VAL) printf("Warn: Input is too small\n");
+					if(input > MAX_INPUT_VAL) printf("Warn: Input is too big\n");
+					printf("Out: ");
+                                        calc(input);
+                                        break;
+                        }
+                }
+        }
+        else
+        {
+                /* method 2: parameter passing */
+
+		static char arg[MAX_INPUT_LEN];
+                strcpy(arg, argv[1]);
+
+		input = strtol(arg, NULL, 10);
+
+                switch(input)
+                {
+                        case 0:
+                                printf("Error: Not a number\n");
+                                x = EXIT_FAILURE;
+                                break;
+                        default:
+                                calc(input);
+                                x = EXIT_SUCCESS;
+                                break;
+                }
+        }
+        return x;
 }

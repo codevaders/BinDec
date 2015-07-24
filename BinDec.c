@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>	  /* strtol()  */
+#include <stdlib.h>   /* strtol()  */
 #include <string.h>   /* strcpy()  */
 
 #define MAX_INPUT_LEN	256

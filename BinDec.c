@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>   /* strtol()  */
-#include <string.h>   /* strcpy()  */
+#include <stdlib.h>     /* strtol()  */
+#include <string.h>     /* strcpy()  */
 
-#define MAX_INPUT_LEN	256
+#define  MAX_INPUT_LEN  256
 
-#define MIN_INPUT_VAL	-32768
-#define MAX_INPUT_VAL	32767
+#define  MIN_INPUT_VAL  -32768
+#define  MAX_INPUT_VAL  32767
 
 long read_int32(void)
 {

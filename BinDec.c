@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 
     printf("Decimal to Binary Converter\n");
     printf("Escape command is \"Quit\".\n");
+
     while(x == EXIT_FAILURE)
     {
       printf("\nIn: ");
@@ -55,18 +56,21 @@ int main(int argc, char *argv[])
 
       switch(input)
       {
-      case -2147483648:
-        x = EXIT_SUCCESS;
-        break;
-      case 0:
-        printf("Error: Not a number\n");
-        break;
-      default:
-        if(input < MIN_INPUT_VAL) printf("Warn: Input is too small\n");
-        if(input > MAX_INPUT_VAL) printf("Warn: Input is too big\n");
-        printf("Out: ");
-        calc(input);
-        break;
+        case -2147483648:
+          x = EXIT_SUCCESS;
+          break;
+
+        case 0:
+          printf("Error: Not a number\n");
+          break;
+
+        default:
+          if(input < MIN_INPUT_VAL) printf("Warn: Input is too small\n");
+          if(input > MAX_INPUT_VAL) printf("Warn: Input is too big\n");
+          printf("Out: ");
+
+          calc(input);
+          break;
       }
     }
   }
@@ -81,14 +85,15 @@ int main(int argc, char *argv[])
 
     switch(input)
     {
-    case 0:
-      printf("Error: Not a number\n");
-      x = EXIT_FAILURE;
-      break;
-    default:
-      calc(input);
-      x = EXIT_SUCCESS;
-      break;
+      case 0:
+        printf("Error: Not a number\n");
+        x = EXIT_FAILURE;
+        break;
+
+      default:
+        calc(input);
+        x = EXIT_SUCCESS;
+        break;
     }
   }
   return x;

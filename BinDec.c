@@ -3,17 +3,14 @@
 #include <ctype.h>      /* isdigit() */
 #include <string.h>     /* strcpy()  */
 
-#if 0
-/* this might be not used now */
 #define MAX_INPUT_LEN	256
-#endif
 
 #define MIN_INPUT_VAL	-32768
 #define MAX_INPUT_VAL	32767
 
 long read_int32(void)
 {
-	static char input[0];
+	static char input[MAX_INPUT_LEN];
 	long result = 0;
 
 	scanf("%s", &input);
@@ -78,7 +75,7 @@ int main(int argc, char *argv[])
         {
                 /* method 2: parameter passing */
 
-		static char arg[0];
+		static char arg[MAX_INPUT_LEN];
                 strcpy(arg, argv[1]);
 
 		input = strtol(arg, NULL, 10);

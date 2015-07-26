@@ -7,10 +7,10 @@
 #define MAX_INPUT_LEN   256
 #endif
 
-#define MIN_INPUT_VAL   -32768
-#define MAX_INPUT_VAL   32767
+#define MIN_INPUT_VAL   -2147483647
+#define MAX_INPUT_VAL   2147483647
 
-#define LEAD_BIT        16
+#define LEAD_BIT        32
 
 long read_int(void)
 {

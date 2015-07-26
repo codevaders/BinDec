@@ -4,13 +4,15 @@
 
 #if 0
 /* MAX_INPUT_LEN might be used in future, but not now */
-#define  MAX_INPUT_LEN  256
+#define MAX_INPUT_LEN   256
 #endif
 
-#define  MIN_INPUT_VAL  -32768
-#define  MAX_INPUT_VAL  32767
+#define MIN_INPUT_VAL   -2147483647
+#define MAX_INPUT_VAL   2147483647
 
-long read_int32(void)
+#define LEAD_BIT        32
+
+long read_int(void)
 {
   static char input[0];
   long result = 0;
@@ -28,14 +30,14 @@ void calc(long decimal_number)
 {
   int i;
 
-  for(i = 0; i < 16; i++)
+  for(i = 0; i < LEAD_BIT; i++)
   {
     /*
     (15 - i)만큼 input을 쉬프트 하여
     왼쪽에서 (i + 1)번째 자리의 비트를 1의 자리로 맞춘 후,
     이것이 1인지 확인하여 출력합니다.
     */
-    printf("%d", (decimal_number >> (15 - i)) & 0x1);
+    printf("%d", (decimal_number >> (LEAD_BIT - (i + 1))) & 0x1);
   }
   printf("\n");
 }
@@ -55,7 +57,7 @@ int main(int argc, char *argv[])
     while(x == EXIT_FAILURE)
     {
       printf("\nIn: ");
-      input = read_int32();
+      input = read_int();
 
       switch(input)
       {

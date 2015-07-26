@@ -4,11 +4,11 @@
 
 #if 0
 /* MAX_INPUT_LEN might be used in future, but not now */
-#define  MAX_INPUT_LEN  256
+#define MAX_INPUT_LEN   256
 #endif
 
-#define  MIN_INPUT_VAL  -32768
-#define  MAX_INPUT_VAL  32767
+#define MIN_INPUT_VAL    -32768
+#define MAX_INPUT_VAL    32767
 
 long read_int32(void)
 {

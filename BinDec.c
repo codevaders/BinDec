@@ -2,11 +2,6 @@
 #include <stdlib.h>     /* strtol()  */
 #include <string.h>     /* strcpy()  */
 
-#if 0
-/* MAX_INPUT_LEN might be used in future, but not now */
-#define MAX_INPUT_LEN   256
-#endif
-
 #define MIN_INPUT_VAL   -2147483647
 #define MAX_INPUT_VAL   2147483647
 

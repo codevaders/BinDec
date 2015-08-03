@@ -5,11 +5,13 @@
 #define MIN_INPUT_VAL   -2147483647
 #define MAX_INPUT_VAL   2147483647
 
+#define MAX_INPUT_LEN   255
+
 #define LEAD_BIT        32
 
 long read_int(void)
 {
-  static char input[0];
+  static char input[MAX_INPUT_LEN];
   long result = 0;
 
   scanf("%s", &input);
@@ -78,7 +80,7 @@ int main(int argc, char *argv[])
   {
     /* method 2: parameter passing */
 
-    static char arg[0];
+    static char arg[MAX_INPUT_LEN];
     strcpy(arg, argv[1]);
 
     input = strtol(arg, NULL, 10);
